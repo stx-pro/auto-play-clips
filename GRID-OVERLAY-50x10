@@ -1,0 +1,157 @@
+ }
+    #grid-overlay .line-vertical,
+    #grid-overlay .line-horizontal {
+      position: absolute;
+      background-color: var(--neon-green);
+      opacity: 0.9;
+      pointer-events: none;
+      mix-blend-mode: difference;
+    }
+    #grid-overlay .line-vertical {
+      width: 1.5px;
+      height: 100%;
+    }
+    #grid-overlay .line-horizontal {
+      height: 1.5px;
+      width: 100%;
+    }
+    #grid-overlay .line-horizontal.thick {
+      height: 3px;
+      opacity: 1;
+    }
+    #grid-overlay .label-col {
+      position: absolute;
+      top: 2px;
+      color: var(--neon-green);
+      font-weight: bold;
+      font-family: monospace;
+      font-size: 14px;
+      pointer-events: none;
+      user-select: none;
+      text-shadow: 0 0 6px black;
+      width: 12px;
+      text-align: center;
+      margin-left: -6px;
+    }
+    #grid-overlay .label-row {
+      position: absolute;
+      left: 2px;
+      color: var(--neon-green);
+      font-weight: bold;
+      font-family: monospace;
+      font-size: 14px;
+      pointer-events: none;
+      user-select: none;
+      text-shadow: 0 0 6px black;
+      width: 24px;
+      text-align: right;
+      line-height: 1;
+      margin-top: -9px;
+    }
+
+
+
+#main-wrapper {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center; /* Center horizontally */
+  height: calc(100vh - 40px);
+  overflow: hidden;
+  position: relative;
+  z-index: 20;
+  margin: auto;
+  max-width: 720px; /* Optional max width */
+}
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+    .switch input {
+      display: none;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #444;
+      transition: 0.4s;
+      border-radius: 24px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: var(--neon-green);
+      transition: 0.4s;
+      border-radius: 50%;
+      box-shadow: 0 0 5px var(--neon-green);
+    }
+    input:checked + .slider {
+      background-color: #222;
+    }
+    input:checked + .slider:before {
+      transform: translateX(26px);
+      background-color: var(--neon-green);
+      box-shadow: 0 0 10px var(--neon-green);
+    }
+  ...
+}
+  // Create grid overlay
+  const gridOverlay = document.getElementById("grid-overlay");
+  const columns = 10;
+  const rows = 50;
+
+  function buildGrid() {
+    gridOverlay.innerHTML = "";
+    const overlayWidth = gridOverlay.clientWidth;
+    const overlayHeight = gridOverlay.clientHeight;
+    const colWidth = overlayWidth / columns;
+    const rowHeight = overlayHeight / rows;
+
+    for (let c = 0; c <= columns; c++) {
+      const line = document.createElement("div");
+      line.classList.add("line-vertical");
+      line.style.left = c * colWidth + "px";
+      gridOverlay.appendChild(line);
+
+      if (c < columns) {
+        const label = document.createElement("div");
+        label.classList.add("label-col");
+        label.style.left = c * colWidth + colWidth / 2 + "px";
+        label.textContent = String.fromCharCode(65 + c);
+        gridOverlay.appendChild(label);
+      }
+    }
+    for (let r = 0; r <= rows; r++) {
+      const line = document.createElement("div");
+      line.classList.add("line-horizontal");
+      line.style.top = r * rowHeight + "px";
+      if (r % 10 === 0) line.classList.add("thick");
+      gridOverlay.appendChild(line);
+
+      if (r < rows) {
+        const label = document.createElement("div");
+        label.classList.add("label-row");
+        label.style.top = r * rowHeight + rowHeight / 2 + "px";
+        label.textContent = r + 1;
+        gridOverlay.appendChild(label);
+      }
+    }
+  }
+  buildGrid();
+  window.addEventListener("resize", buildGrid);
+
+  // Toggle grid and sidebar
+  toggleGridCheckbox.addEventListener("change", e => {
+    const show = e.target.checked;
+    gridOverlay.style.display = show ? "block" : "none";
+    sidebar.style.display = show ? "flex" : "none";
+    sidebar.setAttribute('aria-hidden', !show);
+  });
+
+
