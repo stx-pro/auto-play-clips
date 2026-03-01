@@ -1,0 +1,34 @@
+To link your Blogger Shadow Layer to your Podbean RSS enclosure automatically, you must configure Blogger to treat post links as podcast media enclosures. 
+YouTube
+YouTube
+Once this is set up, any Rama Low track URL you paste into a Blogger post will automatically populate the <enclosure> tag in your feed, which Podbean can then ingest.
+Step 1: Enable Enclosures in Blogger 
+Go to your Blogger Dashboard > Settings.
+Scroll down to Site Feed.
+Set Enable Title Links and Enclosure Links to Yes. 
+YouTube
+YouTube
+Step 2: Connect Blogger to Podbean
+Log in to your Podbean Dashboard.
+Go to Publish > Episodes and click the Import RSS button.
+Paste your Blogger RSS URL: https://yourblog.blogspot.com.
+Podbean will now check this feed and automatically import new posts as podcast episodes. 
+Podbean Blog
+Podbean Blog
+ +3
+Step 3: Creating a "Synched" Post
+When you create a new post for a track like "Routine":
+In the post editor, click Links in the sidebar.
+Paste the direct .mp3 URL into the Enclosure Links field.
+Add the Shadow Layer XML from the previous step into the post's HTML view.
+Publish. Podbean will see the new enclosure link in your Blogger feed and create the episode automatically. 
+Podbean Blog
+Podbean Blog
+ +2
+Automated "Shadow" Metadata for Podbean
+By using the Podbean AI Podcast Creator, you can further automate this by having Podbean scan your Blogger site and automatically convert the text in your "Shadow Layer" into episode show notes and transcripts. 
+Podbean Support
+Podbean Support
+ +1
+Would you like the specific CSS to make your Podbean embedded player match the aesthetic of your Blogger "Shadow Layer" cards?
+
