@@ -1,0 +1,8 @@
+<namespace-registry>
+  <directory-item node="B1" label="Front-End" corner="TL">Netlify Delivery</directory-item>
+  <directory-item node="B2" label="Gateway" corner="TR">Payhip Webhook</directory-item>
+  <directory-item node="B3" label="Auth" corner="BL">Firebase IAM</directory-item>
+  <directory-item node="B4" label="Database" corner="BR">Firestore Realtime</directory-item>
+  <directory-item node="B5" label="Backend" corner="Modal">Render Container</directory-item>
+  <directory-item node="B6" label="Master" corner="Center">Studio-X Editor</directory-item>
+</namespace-registry>
